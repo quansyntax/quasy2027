@@ -1,0 +1,7 @@
+# Only the files the website uses are published.
+.DS_Store
+.claude/
+CLAUDE.md
+images/photos/
+images/quasy2027_logo.svg
+images/quasy2027_logo.png

@@ -1,0 +1,366 @@
+/* QUASY 2027 — shared stylesheet
+   Colours are defined once here; change them in this block only. */
+:root {
+  --ink: #1E3542;          /* deep logo slate: headings, footer background */
+  --slate: #2f4c5c;        /* logo slate */
+  --teal: #0795a6;         /* logo teal: rules, dots, decorative lines */
+  --teal-text: #067a88;    /* darker teal for text links and small labels (AA on white) */
+  --teal-light: #8fd8e1;   /* links on the dark footer */
+  --accent-button: var(--teal-text); /* primary button; try #B4472E (terracotta) */
+  --text: #24323a;
+  --muted: #55656e;
+  --bg: #ffffff;
+  --bg-soft: #f4f7f8;
+  --line: #dbe3e6;
+
+  --font-head: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --wrap: 1120px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  /* keep the footer at the bottom on short pages */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1 0 auto; }
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--teal-text); text-underline-offset: 0.15em; }
+a:hover { color: var(--ink); }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Navigation ---------- */
+.site-nav {
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.site-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 60px;
+}
+.site-nav .brand {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin: 0;
+  padding: 0;
+}
+.site-nav ul a {
+  font-family: var(--font-head);
+  color: var(--slate);
+  text-decoration: none;
+  font-size: 0.98rem;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+.site-nav ul a:hover,
+.site-nav ul a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--teal);
+}
+
+/* ---------- Hero banner ---------- */
+.hero {
+  background: var(--bg);
+  display: grid;
+  /* narrower, taller photo column: the square photo shows almost whole,
+     so the bridge tower and arches stay in view above the swans */
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  height: clamp(380px, 58vh, 500px);
+}
+.hero-text {
+  /* align the text with the .wrap column on wide screens */
+  padding: 32px 48px 32px max(24px, calc((100vw - var(--wrap)) / 2 + 24px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-logo {
+  width: min(400px, 100%);
+  height: auto;
+  margin-bottom: 20px;
+}
+.hero-kicker {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.hero-meta {
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+.hero-photo {
+  margin: 0;
+  overflow: hidden;
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* favour the top: keep the bridge tower's spire, then the swans below */
+  object-position: 50% 15%;
+}
+
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  padding: 10px 22px;
+  border-radius: 3px;
+  text-decoration: none;
+  border: 2px solid var(--accent-button);
+}
+.btn-primary { background: var(--accent-button); color: #fff; }
+.btn-primary:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+.btn-secondary { color: var(--teal-text); border-color: var(--teal-text); background: transparent; }
+.btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ---------- Important dates ---------- */
+.dates {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0 30px;
+}
+.dates h2 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal-text);
+  margin-bottom: 16px;
+}
+.dates ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.dates li {
+  border-top: 3px solid var(--teal);
+  padding-top: 10px;
+}
+.dates .what {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.dates .when {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+.dates .note {
+  margin: 16px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Content sections ---------- */
+.section { padding: 56px 0; }
+.section h2 { font-size: 1.75rem; }
+
+.welcome .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 56px;
+}
+.welcome p { margin: 0 0 1em; }
+
+.topics h3 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal-text);
+  margin-top: 6px;
+}
+.topics ul {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+.topics li {
+  position: relative;
+  padding: 6px 0 6px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.topics li::before {         /* a tree node */
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.95em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+/* Small dependency-tree ornament used as a section divider */
+.tree-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+  color: var(--teal);
+}
+.tree-rule::before,
+.tree-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.tree-rule svg { width: 46px; height: 26px; flex: none; }
+
+.syntaxfest p { max-width: 46em; }
+
+/* ---------- Inner pages (CFP, Committee) ---------- */
+.page-head {
+  padding: 44px 0 28px;
+}
+.page-head .kicker {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal-text);
+  margin: 0 0 8px;
+}
+.page-head h1 { font-size: 2.4rem; margin-bottom: 10px; }
+.page-head .lead { color: var(--muted); max-width: 40em; margin: 0; }
+
+.prose { max-width: 46em; }
+.prose h2 { font-size: 1.5rem; margin-top: 1.8em; }
+.prose h2:first-child { margin-top: 0; }
+.prose p, .prose ul { margin: 0 0 1em; }
+.prose ul { padding-left: 1.2em; }
+.prose li { margin-bottom: 0.3em; }
+.prose li::marker { color: var(--teal); }
+
+/* "To be announced" placeholder */
+.tba {
+  display: inline-block;
+  font-family: var(--font-head);
+  color: var(--slate);
+  background: var(--bg-soft);
+  border-left: 3px solid var(--teal);
+  padding: 6px 14px;
+}
+
+/* Two committee groups side by side */
+.committee-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+.committee-groups h2 { font-size: 1.5rem; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--ink);
+  color: #dfe8ec;
+  padding: 40px 0 32px;
+  font-size: 0.95rem;
+}
+.site-footer a { color: var(--teal-light); }
+.site-footer a:hover { color: #fff; }
+.site-footer .cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.site-footer h2 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.site-footer p { margin: 0 0 6px; }
+.site-footer .credit {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+  color: #b9c8cf;
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .hero-text { padding: 20px 24px 18px; }
+  .hero-logo { width: min(240px, 70%); margin-bottom: 12px; }
+  .hero-photo { aspect-ratio: 4 / 3; }
+  .hero-photo img { object-position: 50% 40%; }
+
+  .dates ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; }
+  .welcome .wrap { grid-template-columns: 1fr; gap: 24px; }
+  .committee-groups { grid-template-columns: 1fr; gap: 28px; }
+  .page-head { padding: 32px 0 20px; }
+  .page-head h1 { font-size: 2rem; }
+  .site-footer .cols { grid-template-columns: 1fr; gap: 20px; }
+}
+
+@media (max-width: 520px) {
+  .site-nav .wrap { flex-direction: column; align-items: flex-start; gap: 2px; padding-top: 10px; padding-bottom: 8px; }
+  .site-nav ul { gap: 2px 18px; }
+  .hero-kicker { font-size: 1.15rem; }
+  .hero-meta { margin-bottom: 16px; }
+  .btn { padding: 9px 18px; }
+  .dates .when { font-size: 1.05rem; }
+  .section { padding: 40px 0; }
+}
