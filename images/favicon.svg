@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Dependency tree from the QUASY logo -->
+  <g stroke="#0795a6" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M30 12 L12 34 M30 12 L44 30 M44 30 L32 50 M44 30 L56 50"/>
+  </g>
+  <g fill="#0795a6">
+    <circle cx="30" cy="11" r="7"/>
+    <circle cx="11" cy="36" r="7"/>
+    <circle cx="44" cy="30" r="7"/>
+    <circle cx="31" cy="52" r="7"/>
+    <circle cx="56" cy="52" r="7"/>
+  </g>
+</svg>

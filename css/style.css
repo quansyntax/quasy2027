@@ -308,6 +308,21 @@ h1, h2, h3 {
 }
 .committee-groups h2 { font-size: 1.5rem; }
 
+/* People lists (chairs, committees) */
+.people { list-style: none; margin: 0; padding: 0; }
+.people li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.people li:first-child { border-top: 1px solid var(--line); }
+.people .name {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.people .affil { display: block; color: var(--muted); }
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--ink);
