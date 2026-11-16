@@ -24,7 +24,9 @@ the 4th Workshop on Quantitative Syntax (part of SyntaxFest 2027, Prague).
 The shared colours, fonts and logo rules are described in the README of
 the series page repository.
 
-## Photo credit
+## Credits
 
-“Swans in front of Charles Bridge, Prague” by Pierre Blaché, via Wikimedia
+Logo designed by Chenxin Zhang.
+
+Photo: “Swans in front of Charles Bridge, Prague” by Pierre Blaché, via Wikimedia
 Commons, CC0 1.0.
