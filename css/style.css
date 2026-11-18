@@ -107,16 +107,24 @@ h1, h2, h3 {
 
 /* ---------- Hero banner ---------- */
 .hero {
+  --hero-h: clamp(380px, 58vh, 500px);
+  --hero-max: 1600px;
   background: var(--bg);
   display: grid;
-  /* narrower, taller photo column: the square photo shows almost whole,
-     so the bridge tower and arches stay in view above the swans */
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  height: clamp(380px, 58vh, 500px);
+  /* The photo is square. Its column is never wider than 1.15 × the banner
+     height, so the frame stays close to square on every screen and shows
+     the bridge tower and the swans together. (A column that grows with the
+     screen width becomes a wide strip on large monitors and crops the swans
+     away.) On very wide screens the banner stops at --hero-max and is centred. */
+  grid-template-columns: minmax(0, 1fr) min(40%, calc(var(--hero-h) * 1.15));
+  height: var(--hero-h);
+  width: 100%;
+  max-width: var(--hero-max);
+  margin: 0 auto;
 }
 .hero-text {
   /* align the text with the .wrap column on wide screens */
-  padding: 32px 48px 32px max(24px, calc((100vw - var(--wrap)) / 2 + 24px));
+  padding: 32px 48px 32px max(24px, calc((min(100vw, var(--hero-max)) - var(--wrap)) / 2 + 24px));
   display: flex;
   flex-direction: column;
   justify-content: center;
